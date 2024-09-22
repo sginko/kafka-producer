@@ -4,7 +4,6 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
-import java.util.Locale;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -12,12 +11,11 @@ public class Main {
     public static void main(String[] args) {
         String something;
         String exit;
-
         Scanner scan = new Scanner(System.in);
 
         do {
             System.out.print("Enter something: ");
-            something = scan.nextLine().toLowerCase(Locale.ROOT);
+            something = scan.nextLine();
 
             Properties props = new Properties();
             props.put("bootstrap.servers", "localhost:9092");
@@ -35,7 +33,7 @@ public class Main {
 
             System.out.print("Do you want continue? N / Y: ");
             exit = scan.nextLine().toLowerCase();
-
-        } while (exit.equals("Y"));
+        } while (exit.equals("y"));
+        scan.close();
     }
 }
